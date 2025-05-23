@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>3時間ごとの天気を検索</title>
+    <style>
+        .weather-container {
+            position: relative;
+            width: 450px;
+            height: 650px;
+            margin: 40px auto;
+            background: url('/images/background.jpg') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .search-form input[type="text"] {
+            width: 200px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-form button {
+            padding: 0;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .search-form button img {
+            height: 36px;
+            width: 36px;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .search-form button:hover img {
+            transform: scale(1.15);
+            filter: brightness(1.2);
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/">現在の天気</a>
+        <a href="/hourly">3時間ごとの天気(5日分)</a>
+    </nav>
+
+    <div class="weather-container">
+        <h1>3時間ごとの天気を検索(5日分)</h1>
+        <form method="post" action="/hourly" class="search-form">
+            <input type="text" name="location" placeholder="都市名を入力" required/>
+            <button type="submit">
+                <img src="/images/searchButton.png" alt="検索" />
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

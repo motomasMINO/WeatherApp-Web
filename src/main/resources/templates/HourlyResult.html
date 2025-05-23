@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>3時間ごとの天気(5日分)</title>
+    <style>
+        .weather-container {
+            position: relative;
+            width: 450px;
+            height: auto;
+            max-height: 650px; 
+            overflow-y: auto;  
+            margin: 40px auto;
+            background: url('/images/Background.jpg') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .weather-container h1 {
+            text-align: center;
+            margin: 20px;
+        }
+        .forecast-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .forecast-table th, .forecast-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        .forecast-table th {
+            background: rgba(0,0,0,0.3);
+        }
+        .forecast-table td img {
+            width: 48px;
+            height: 48px;
+        }
+        a.back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1 th:text="${location} + ' の3時間ごとの天気(5日分)'"></h1>
+
+        <table class="forecast-table" th:if="${forecasts}">
+            <tr>
+                <th>日時</th>
+                <th>天気</th>
+                <th>気温 (°C)</th>
+                <th>アイコン</th>
+            </tr>
+            <tr th:each="forecast : ${forecasts}">
+                <td th:text="${#temporals.format(forecast.dateTime, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${forecast.description}"></td>
+                <td th:text="${forecast.temp}"></td>
+                <td>
+                    <img th:src="'https://openweathermap.org/img/wn/' + ${forecast.icon} + '@2x.png'" alt="天気アイコン"/>
+                </td>
+            </tr>
+        </table>
+
+        <div th:if="${#lists.isEmpty(forecasts)}">
+            <p style="text-align:center;">天気情報を取得できませんでした。</p>
+        </div>
+
+        <a href="/hourly" class="back-link">← 戻る</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>天気結果</title>
+    <style>
+        .weather-container {
+            position: relative;
+            width: 450px;
+            height: 650px;
+            margin: 40px auto;
+            background: url('/images/Background.jpg') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .weather-info {
+            margin-top: 20px;
+        }
+        .weather-info img {
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .weather-info p {
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-container">
+        <h1 th:text="${location} + 'の天気情報'"></h1>
+
+        <div th:if="${error}">
+            <p th:text="${error}"></p>
+        </div>
+
+        <div th:if="${temperature}" class="weather-info">
+            <img th:src="'https://openweathermap.org/img/wn/' + ${icon} + '@2x.png'" alt="天気アイコン"/>
+            <p>気温: <span th:text="${temperature}">--</span> ℃</p>
+            <p>湿度: <span th:text="${humidity}">--</span> %</p>
+            <p>天気: <span th:text="${weather_condition}">--</span></p>
+            <p>風速: <span th:text="${windspeed}">--</span> m/s</p>
+        </div>
+
+        <a href="/" class="back-link">← 戻る</a>
+    </div>
+</body>
+</html>
