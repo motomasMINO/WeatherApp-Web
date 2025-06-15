@@ -51,11 +51,6 @@ OpenWeatherMap APIを利用して、指定した都市の「現在の天気」�
    ```bash
    mvnw spring-boot:run
    ```
-   または
-
-　　```bash
-　　mvn spring-boot:run
-   ```
 
 3. ブラウザでアクセス
 
