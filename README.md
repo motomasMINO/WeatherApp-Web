@@ -49,9 +49,14 @@ OpenWeatherMap APIを利用して、指定した都市の「現在の天気」�
 2. アプリ起動
 
    ```bash
-   ./mvnw spring-boot:run
+   mvnw spring-boot:run
    ```
- 
+   または
+
+　　```bash
+　　mvn spring-boot:run
+   ```
+
 3. ブラウザでアクセス
 
    http://localhost:8080
