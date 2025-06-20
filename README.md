@@ -1,5 +1,5 @@
 # 天気予報Webアプリ
-Spring BootとThymeleafで構築されたシンプルな天気予報Webアプリケーションです。
+Spring BootとThymeleafで作成したシンプルな天気予報Webアプリケーションです。
 
 OpenWeatherMap APIを利用して、指定した都市の「現在の天気」と「3時間ごとの天気(5日分)」を取得・表示できるようにしました。
 
